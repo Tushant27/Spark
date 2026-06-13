@@ -1,0 +1,21 @@
+what is Apache Spark?
+So the definition is Apache Spark is a unified computing engine and set of libraries for parallel data processing on computer clusters.
+
+What is unified?
+Unified, instead of having separate disjoint pools for different tasks like one of the batch jobs, another for streaming, and so on, Spark integrates them all.
+
+what is computing engine?
+Core part that performs calculation or data operation in Spark, it is the engine that distributes tasks across cluster, processing data in parallel and handles all the lifting.
+Data processing RAM mein hoti hai, RAM clean data gone
+So storage that is cloud, server, and RDMS, etc.
+
+What is Libraries ?
+are pre-written code modules. Example: Pandas.
+
+What is parallel data processing ?
+breaking down tasks into smaller pieces and running them simultaneously on multiple processors or machines.
+
+whta is computing cluster?
+Interconnected computers or nodes that work together as if they were a single system.
+
+
