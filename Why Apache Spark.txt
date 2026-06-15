@@ -1,0 +1,28 @@
+Why Apache Spark? 
+So Apache Spark is used to process large amount of data quickly across multiple computers. Before, the database where Oracle, Teradata, Exadata, MySQL, so these were stored in structured format, that is Excel.
+
+
+We have semi-structured also, that is JSON and YAML.
+
+
+After the internet, the data was in the type of image, videos, etc. And in big amount
+
+
+Big Data : 3v's of big data
+1.Velocity -> 1sec,1hr
+2.Variety -> structured , semi structured ,un structured
+3.Volume -> 5GB, 1TB....
+
+
+ETL is extract, transform, load, previously used
+ETL extract, load, transform. Now we use it: we have lots of data, so we load it first and then we transform it.
+
+
+| Feature      | Monolithic System                           | Distributed System                  |
+| ------------ | ------------------------------------------- | ----------------------------------- |
+| Architecture | Runs as a single application on one machine | Runs across multiple machines       |
+| Scalability  | Limited (scale up one server)               | Easy (add more servers)             |
+| Performance  | Good for small workloads                    | Better for large workloads          |
+| Failure      | If server fails, entire app may stop        | Other machines can continue working |
+| Complexity   | Simple to develop and deploy                | More complex to manage              |
+| Example      | Traditional Java application on one server  | Apache Spark, Hadoop, Microservices |
