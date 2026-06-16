@@ -1,0 +1,10 @@
+| Feature              | Hadoop                  | Spark                             |
+| -------------------- | ----------------------- | --------------------------------- |
+| Processing Speed     | Slower                  | Much Faster                       |
+| Data Storage         | Uses HDFS for storage   | Can use HDFS, S3, databases, etc. |
+| Processing Method    | Disk-based              | In-memory (RAM-based)             |
+| Batch Processing     | Yes                     | Yes                               |
+| Real-Time Processing | No (limited)            | Yes                               |
+| Ease of Development  | More complex            | Easier APIs                       |
+| Machine Learning     | Requires separate tools | Built-in ML library (MLlib)       |
+| Streaming Data       | Not designed for it     | Supports real-time streaming      |
