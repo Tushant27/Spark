@@ -1,0 +1,75 @@
+spark
+----------------
+
+df = spark.read.format("csv") \
+    .option("header", "true") \
+    .option("inferSchema", "true") \
+    .option("mode", "PERMISSIVE") \
+    .load("/Volumes/test_catalog/default/tushant/emp.csv")
+
+df.show()
+
++---+--------+---+------+------------+--------+
+| id|    name|age|salary|     address| nominee|
++---+--------+---+------+------------+--------+
+|  1|  Manish| 26| 75000|       bihar|nominee1|
+|  2|  Nikita| 23|100000|uttarpradesh|nominee2|
+|  3|  Pritam| 22|150000|   Bangalore|   India|
+|  4|Prantosh| 17|200000|     Kolkata|   India|
+|  5|  Vikash| 31|300000|        NULL|nominee5|
++---+--------+---+------+------------+--------+
+
+
+---------------------------------------
+
+from pyspark.sql.types import StructType,StructField,StringType,IntegerType
+
+emp_schema = StructType([
+    StructField("id", IntegerType(), True),
+    StructField("name", StringType(), True),
+    StructField("age", IntegerType(), True),
+    StructField("salary", IntegerType(),True),
+    StructField("address", StringType(), True),
+    StructField("nominee", StringType(), True),
+    StructField("_corrupt_record", StringType(), True)
+])
+
+emp_df = spark.read.format("csv") \
+    .option("header", "true") \
+    .option("inferSchema", "true") \
+    .schema(emp_schema) \
+    .option("mode", "PERMISSIVE") \
+    .load("/Volumes/test_catalog/default/tushant/emp.csv")
+
+emp_df.show(truncate = False)
+
++---+--------+---+------+------------+--------+-------------------------------------------+
+|id |name    |age|salary|address     |nominee |_corrupt_record                            |
++---+--------+---+------+------------+--------+-------------------------------------------+
+|1  |Manish  |26 |75000 |bihar       |nominee1|NULL                                       |
+|2  |Nikita  |23 |100000|uttarpradesh|nominee2|NULL                                       |
+|3  |Pritam  |22 |150000|Bangalore   |India   |3,Pritam,22,150000,Bangalore,India,nominee3|
+|4  |Prantosh|17 |200000|Kolkata     |India   |4,Prantosh,17,200000,Kolkata,India,nominee4|
+|5  |Vikash  |31 |300000|NULL        |nominee5|NULL                                       |
++---+--------+---+------+------------+--------+-------------------------------------------+
+
+-------------------------------------------
+
+employee_df = spark.read.format("csv") \
+    .option("header", "true") \
+    .option("inferSchema", "true") \
+    .schema(emp_schema) \
+    .option("badRecordsPath", "/Volumes/test_catalog/default/tushant/bad_records")\
+    .load("/Volumes/test_catalog/default/tushant/emp.csv")
+ 
+employee_df.show(truncate = False)
+
++---+------+---+------+------------+--------+---------------+
+|id |name  |age|salary|address     |nominee |_corrupt_record|
++---+------+---+------+------------+--------+---------------+
+|1  |Manish|26 |75000 |bihar       |nominee1|NULL           |
+|2  |Nikita|23 |100000|uttarpradesh|nominee2|NULL           |
+|5  |Vikash|31 |300000|NULL        |nominee5|NULL           |
++---+------+---+------+------------+--------+---------------+
+
+------------------------------------------------------
