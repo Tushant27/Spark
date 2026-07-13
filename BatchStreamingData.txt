@@ -1,0 +1,2 @@
+Batch/streaming data
+Unify the processing of your data in batches and real-time streaming, using your preferred language: Python, SQL, Scala, Java or R.
